@@ -1,0 +1,22 @@
+<div ng-controller="ordersController">
+
+	<table>
+		<thead>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Quantity</th>
+			<th>Actions</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="product in products">
+				
+				<td>{{product.name}}</td>
+				<td>{{product.price | currency:"$"}}</td>
+				<td>{{product.quantity}}</td>
+				<td>
+					<button ng-click="buyAProduct($index)">Buy Product</button>
+				</td>		
+			</tr>	
+		</tbody>	
+	</table>	
+</div>

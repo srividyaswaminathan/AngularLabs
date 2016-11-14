@@ -1,0 +1,8 @@
+
+<form>
+	<p>First Name <input type="text" name="first_name" ng-model="newUser.firstname"></p>
+	<p>Last Name<input type="text" name="last_name" ng-model="newUser.lastname"></p>
+	<p>Favorite Language<input type="text" name="language" ng-model="newUser.language"></p>
+	<p><input type="submit" value="Create User" ng-click="addUser(newUser.firstname, newUser.lastname, newUser.language)"></p>
+</form>
+

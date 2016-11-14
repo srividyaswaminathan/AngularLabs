@@ -1,0 +1,25 @@
+<hr/>
+<div ng-controller="teamsController">
+	<form>
+		<p>Team Name: <input type="text" name="team_name" ng-model="newTeam.name"></p>
+		<input type="submit" value="Add a new team" ng-click="addTeam(newTeam.name)"></p>
+	</form>	
+</div>	
+<hr/>
+<table>
+		<thead>
+			<th>Team Name</th>
+			<th>Actions</th> 
+		</thead>
+		<tbody>							
+		<tr ng-repeat="team in teams">
+						
+			<td><a href="#/{{team.name}}">{{team.name}}</a></td>
+			<td>
+				<button ng-click="deleteTeam($index)">Remove Team</button>
+			</td>	
+		</tr>	
+		</tbody>	
+
+</table>	
+

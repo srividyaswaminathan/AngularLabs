@@ -1,0 +1,25 @@
+<div ng-controller="productsController">
+	<form>
+		<p>Product Name: <input type="text" name="product_name" ng-model="newProduct.name"></p>
+		<p>Product Price(USD): <input type="number" name="product_price" ng-model="newProduct.price"></p>
+		<p><input type="submit" value="Add Product" ng-click="addProduct(newProduct.name, newProduct.price)"></p>
+	</form>	
+	<table>
+		<thead>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Actions</th> 
+		</thead>
+		<tbody>							
+		<tr ng-repeat="product in products" | orderBy: 'price' > 
+						
+			<td>{{product.name}}</td>
+			<td>{{product.price | currency:"$"}}</td>
+			<td>
+				<button ng-click="deleteProduct($index)">Delete Product</button>
+			</td>	
+		</tr>	
+		</tbody>	
+
+	</table>	
+</div>	

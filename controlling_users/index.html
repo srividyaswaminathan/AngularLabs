@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+  	<head>
+
+	    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js'></script>
+	    <script src="main.js"></script>	
+	    <link rel="stylesheet"  href="styles.css">
+	    <script type='text/javascript'>
+
+	    </script>
+	</head>
+	<body>
+		<div ng-controller="usersController">
+			<form>
+				<p>First Name: <input type="text" name="first_name" ng-model="newUser.firstname"></p>
+				<p>Last Name:<input type="text" name="last_name" ng-model="newUser.lastname"></p>
+				<p>Favorite Languauge: <input type="text" name="last_name" ng-model="newUser.language"></p>
+				<p><input type="submit" value="Create User" ng-click="addUsers()"></p>
+			</form>
+
+			<p>Search: <input type="text" name="search_first_name" ng-model="search_text"></p>
+			<table>
+				<thead>
+					<th>
+          				<a href="#" ng-click="sortType = 'firstname'">
+            				First Name 
+            				<span ng-show="sortType == 'firstname'"></span>
+          				</a>
+        			</th>
+					<th>
+          				<a href="#" ng-click="sortType = 'lastname'">
+            				Last Name 
+            				<span ng-show="sortType == 'lastname'"></span>
+          				</a>
+        			</th>
+        			<th>
+          				<a href="#" ng-click="sortType = 'language'">
+            				Language 
+            				<span ng-show="sortType == 'language'"></span>
+          				</a>
+        			</th>
+        			<th>Date</th>
+        			<th>Actions</th>      				
+        			
+					
+				</thead>
+				<tbody>				
+					
+					<tr ng-repeat="user in users | orderBy:sortType" ng-if="(search_text === undefined || search_text.length === 0) || ((user.firstname + user.lastname + user.language).indexOf(search_text)!=-1)">
+							
+							<td>{{user.firstname}}</td>
+							<td>{{user.lastname}}</td>
+							<td>{{user.language}}</td>
+							<td>{{date | date:'yyyy-MM-dd'}}</td>
+							<td>
+								<button ng-click="deleteUser($index)">Delete User</button>
+							</td>
+						
+					</tr>	
+
+				</tbody>	
+			</table>
+		</div>	
+	</body>
+</html>	    
+
+

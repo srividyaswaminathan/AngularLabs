@@ -1,0 +1,30 @@
+<hr/>
+<div ng-controller="playersController">
+	<form name="playerForm">
+		<p>Name: <input type="text" name="player_name" ng-model="newPlayer.name" ng-minlength='4' required></p>
+		<input type="submit" value="Add player" ng-click="addPlayer(newPlayer.name)"></p>
+	</form>	
+</div>	
+<hr/>
+<table>
+		<thead>
+			<th>Name</th>
+			<th>Actions</th> 
+		</thead>
+		<tbody>							
+		<tr ng-repeat="player in players">
+						
+			<td>{{player.name}}</td>
+			<td>
+				<button ng-click="deletePlayer($index)">Remove Player</button>
+			</td>	
+		</tr>	
+		</tbody>	
+
+</table>	
+
+<div ng-messages="playerForm.name.$error">
+     <p ng-message="minlength">The player name is too short.</p>
+     <p ng-message="required">The player name is required.</p>
+ </div>
+</div>
